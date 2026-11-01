@@ -1,48 +1,33 @@
-# MONTYX RECORDS Distribution redesign — delivery checklist
+# MONTYX RECORDS Distribution — updated delivery checklist
 
-## Public one-page distribution landing
+## Landing page and artist onboarding
+- [x] Preserve the existing MONTYX logo. Do not redesign or replace `client/public/montyx-mark.png` or the favicon.
+- [ ] Rebuild only the public marketing landing page; keep the existing MONTYX dark/crimson identity and a professional, mobile-first distribution-product layout. Use high-level onboarding clarity from DistroKid as inspiration, but do not copy its exact UI, wording, logo, plan-card composition, distinctive visual assets or trade dress.
+- [ ] Add a prominent **Get Started** CTA to the hero, shared header, and closing section; each must link directly to `https://user.montyxlabel.cyou/login`. The portal login page already provides its own account-creation link. Do not build or claim a second account/sign-up service or modify the external portal.
+- [ ] Describe the owner-confirmed MONTYX offer accurately: free to access/submit releases and no stated release-count cap. Keep review, provider approval, destination selection, rights checks, territory and store availability qualifications visible. Do not claim guaranteed instant approval, delivery time, earnings or exposure.
+- [ ] Keep support available at `support@montyxlabel.cyou`; contact/inquiry remains a secondary action.
 
-- [x] Replace the public home page with a single scroll-first landing page for MONTYX RECORDS Distribution. Use anchored navigation for the destination network, release process, artist-first approach, FAQs, and a clear contact action. Use the existing contact/inquiry route until a real distribution signup URL is supplied; do not invent an account-registration flow.
-- [x] Give the landing page a professional, mobile-first identity consistent with MONTYX RECORDS. Research popular music-distribution sites for category-level UX patterns, but do not copy any competitor’s exact interface, text, marks, artwork, signature components, screenshots, layout, or trade dress.
-- [x] Include readable official marks for popular music streaming and social destinations, including Spotify, Apple Music, YouTube Music, Amazon Music, Deezer, TIDAL, SoundCloud, TikTok, Instagram, Facebook, Audiomack, Pandora, Anghami, Boomplay, and JioSaavn only where appropriate. Marks identify destinations, are not represented as endorsements/partnerships, and carry an availability caveat. Do not claim an exhaustive or unconditional destination list without verifying the actual supported catalog and mark-use requirements.
-- [x] Explain the distribution offer and release journey plainly, retain the Nepal-rooted independent identity and applicable artist master-ownership statement, and include a compact FAQ and closing CTA. Do not invent pricing, royalty share, payment schedules, delivery times, analytics, clients, testimonials, certifications, partnerships, guarantees, platform integrations, or audience/performance statistics.
-- [x] Preserve contact, legal, rights and private data. Remove the public `/admin` page and all application-level management APIs; keep `/contact`, `/privacy`, `/terms`, and `/rights`; direct legacy `/releases`, `/releases/:slug`, `/about`, and `/artists/:slug` traffic to relevant landing sections without deleting catalog records or making private metadata public.
+## Destinations, comparison and YouTube
+- [ ] Replace remaining text-only logo substitutes with real graphic marks for the curated, upstream-named DSP destinations. Keep readable service names as supporting text/accessible names. Do not alter the MONTYX mark. Exclude Beatport/Traxsource from supported white-label examples because S-Music’s public page says third-party white-label accounts do not currently receive them; clearly label any remaining examples and the provider/network claim as qualified.
+- [ ] Show the S-Music public network statement only as source-attributed provider wording: “375+ audio DSPs / 125+ video platforms (S-Music claim),” not a guarantee that any single release reaches every platform or territory. Do not claim “verified by YouTube,” “verified by every DSP,” universal all-platform delivery, or add a false certification badge. Explain service selection, release/platform eligibility and territory caveats.
+- [ ] Add a source-linked comparison between MONTYX/S-Music, DistroKid, TuneCore, CD Baby, Ditto, UnitedMasters, Amuse, RouteNote and ONErpm. Compare public entry price/model, published upload/release-count language, royalty/commission basis, advertised network count where stated, and YouTube OAC status. State the source access date (2026-11-01); distinguish gross vs. net, subscription vs. per-release costs and optional fees; say “not stated” where sources do not establish a term; link official sources and note terms/prices vary and change.
+- [ ] Disclose the material S-Music upstream white-label statement: its public homepage claims a 20% share of gross royalties and says free accounts/white-label access; do not imply artists retain 100% of gross or that this is necessarily MONTYX’s complete artist-facing split. Attribute to S-Music and ask artists to confirm MONTYX’s own applicable agreement/terms.
+- [ ] Add a clear YouTube explainer distinguishing YouTube Music Art Tracks/Topic channels, OAC application/channel consolidation, and Content ID. Attribute OAC support to S-Music’s public claim, state that YouTube controls eligibility/approval and channel behavior, and do not guarantee personal/Topic merging. Link YouTube’s official OAC help and the portal’s Content ID requirements; note the portal’s exclusive-worldwide-rights and no-AI-assisted-music criteria.
+- [x] Keep the current six-site distribution UX research and eight-provider comparison report; extend it with sourced S-Music white-label terms, store exceptions, and YouTube evidence.
 
-## Original 3D visual and interaction
+## Reliability, security and preserved behavior
+- [ ] Finish validating native Node 24 ESM imports for isolated Vercel page/contact/settings functions and the shared Supabase helper dependency before publishing.
+- [x] Keep the standalone health, page SEO, sitemap, social-settings and contact endpoints isolated from the failing Express/tRPC catch-all; the public landing/contact flow must not regress to depending on the legacy adapter.
+- [ ] Keep contact validation, anti-spam controls, restricted Supabase persistence and Resend notification. Only report email sent after Resend accepts it; preserve saved-only/error states and the prefilled mailto fallback. The `RESEND_API_KEY` is production-only in Vercel; verified sender and live mail acceptance remain to be confirmed.
+- [x] Keep all public admin/login/content-management APIs and the dormant admin bootstrap CLI removed. Do not delete existing Supabase rows, storage files, contracts or private notes; keep policies fail-closed.
+- [x] Preserve `/contact`, `/privacy`, `/terms`, `/rights`, SEO/sitemap/robots behavior, Nepali label identity and artist master-ownership language.
+- [x] Preserve low-end safeguards: no WebGL on small/touch screens, save-data/slow connections, devices reporting 4 GB or less memory, or CPUs with four or fewer cores; honor reduced motion and retain a static hero.
+- [x] Preserve existing Vercel environment values; only the new sensitive production `RESEND_API_KEY` was added. Do not touch the owner's unstaged `.env.example` edit.
 
-- [x] Add an original abstract signal/orbit 3D visual using Three.js/React Three Fiber, with existing Framer Motion for restrained transitions. Treat 3D as decorative; preserve essential copy, destination names and controls as accessible HTML.
-- [x] Defer WebGL and skip it on small/touch, data-saving/slow-connection, low-memory or low-core devices; retain static/reduced-motion fallbacks, responsive layout and no heavy always-running animation.
-- [x] Use only original or properly authorized visual assets; do not use stock-search images without verified reuse terms.
-
-## Preserved backend, security and policy pages
-
-- [x] Remove the public `/admin` UI, password-login API, mounted CRUD/inbox/settings API namespace and dormant administrator-bootstrap CLI; reject legacy synthetic password-admin sessions. Do not expose private data or production secrets.
-- [x] Preserve Supabase PostgreSQL content, schema, storage and fail-closed access policies. Keep existing records; do not expose internal release fields, credentials, contracts or unreleased masters.
-- [ ] Keep `/contact` validation, spam control and restricted message storage; save to Supabase first, then deliver through Resend to `support@montyxlabel.cyou` only when the configured verified sender is accepted. The production-only `RESEND_API_KEY` is now stored in Vercel; sender-domain verification and live provider acceptance remain to be confirmed. Report saved-only if the provider does not accept a message and retain the prefilled email draft fallback.
-- [x] Preserve `/privacy`, `/terms`, and `/rights`; retain the statement that artists retain master ownership unless a separate written agreement says otherwise and avoid unsupported legal-compliance claims.
-- [x] Preserve all existing Vercel environment values; add only the new sensitive production `RESEND_API_KEY`. No Supabase records or storage objects were deleted.
-
-## Routes, SEO and reliability
-
-- [x] Provide meaningful initial landing metadata, distinct title/description, Open Graph/Twitter metadata, canonical URL for the verified origin, accessible links, custom logo/favicon, sitemap, robots, and synchronized `manus-routes.json`. `/admin` is a non-indexable 404 in server-rendered page logic.
-- [ ] Repair production serverless 500s. New standalone Vercel handlers now isolate health, page SEO HTML, sitemap, public social settings and contact from the legacy Express catch-all; this source change is not yet deployed, so live route confirmation remains open.
-- [x] TypeScript diagnostics, production build, and 20 automated tests pass locally. [ ] Confirm production-domain deployment and browser-facing routes after publishing.
-
-## Publication and handoff
-
-- [ ] Commit and push intended source/documentation to `SoloFFCreator/montyx-records` `main` with a normal non-forced push. Confirm a new Vercel production deployment and verify the deployment URL plus `montyxlabel.cyou`/`www.montyxlabel.cyou` before claiming the repair is live.
-- [x] Keep the cited six-site review and owner handoff documenting destination-mark caveats, unsupported/unknown commercial terms, the real contact route, and preserved data/admin boundaries.
-
-## Owner-requested site refinements
-
-- [x] Skip WebGL on small/touch screens, Save-Data/slow connections, devices reporting 4 GB or less memory, and CPUs with four or fewer cores; keep static hero, reduced-motion support and responsive layout.
-- [x] Remove public administrator page, password-login API, mounted admin CRUD/inbox/settings procedures and dormant administrator-bootstrap CLI; reject sessions from the retired password flow without deleting Supabase records.
-- [x] Add the original transparent MONTYX record/signal logo mark and use it for the wordmark icon and browser/touch icon.
-- [x] Add `support@montyxlabel.cyou` as a site-wide direct mail link and contact page address; provide a prefilled device email draft when automatic delivery is unavailable.
-
-## Owner-requested repair — 2026-10-26
-
-- [ ] Fix and verify production routes currently returning `FUNCTION_INVOCATION_FAILED`. The active deployment is still commit `739166f`; its dynamic page/API checks currently return 500. Vercel runtime logs are unavailable on the Hobby retention window, so the specific platform exception is not yet evidenced.
-- [ ] Deploy the new independent Vercel route handlers and verify health, contact, settings, sitemap, legal pages, `/admin` 404, and normal static assets. The old `/api/trpc` Express adapter remains separate; active landing/contact UI no longer depends on it.
-- [ ] Verify Resend's configured `support@montyxlabel.cyou` sender domain and an actual form submission after deployment. Key setup is complete, but provider acceptance has not yet been observed.
-- [ ] Expand destination marks/count beyond the illustrative set only after identifying MONTYX's real upstream distributor and validating its official current services, territory exceptions and mark permissions. The active MONTAGEM release has no `distributorName`; do not attribute another distributor's catalog to MONTYX.
+## Checks and delivery
+- [x] Run `pnpm check` (pass), `pnpm test` (20/20 pass), `pnpm build` (pass) and `git diff --check`; verify the built route manifest returns HTTP 200 JSON matching `/`, `/contact`, `/privacy`, `/terms` and `/rights`, and the hero/logo/platform assets return HTTP 200.
+- [ ] Complete the standalone-handler and production-route smoke for health/page/contact/settings/sitemap/robots, the genuine `/admin` 404, Resend sender acceptance, and the final live aliases.
+- [ ] Commit and push only intended project source/docs normally to `SoloFFCreator/montyx-records` `main`; fetch/integrate concurrent main changes first and never force-push. Leave `.env.example` unstaged.
+- [ ] Confirm the new Vercel deployment is ready and live HTTP responses are correct on the deployment URL plus `montyxlabel.cyou` and `www.montyxlabel.cyou`; do not claim production success from local checks or Git push alone.
+- [ ] Verify a real Resend-accepted test email only after the production deployment and sending-domain confirmation; no test message has been sent.
+- [ ] Provide a final handoff with the published landing URL and portal login URL, comparison source/access date, material upstream royalty/store caveats, and any unresolved blocker.

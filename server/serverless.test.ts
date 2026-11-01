@@ -49,13 +49,17 @@ describe("Vercel serverless application", () => {
     const page = await renderSeoDocument(template, "/");
     expect(page.status).toBe(200);
     expect(page.html).toContain(
-      "<title>MONTYX RECORDS Distribution — Music from Nepal to the world</title>"
+      "<title>MONTYX RECORDS Distribution | Free artist portal from Nepal</title>"
     );
     expect(page.html).toContain("<h1>Your music. Going further.</h1>");
-    expect(page.html).toContain("Major music destinations");
+    expect(page.html).toContain("Get started in the artist portal");
     expect(page.html).toContain(
-      "not a live or exhaustive supported-store list"
+      'href="https://user.montyxlabel.cyou/login">Get Started at user.montyxlabel.cyou'
     );
+    expect(page.html).toContain("Compare music distribution terms");
+    expect(page.html).toContain("375+ audio DSPs and 125+ video platforms");
+    expect(page.html).toContain("20% gross-royalty share");
+    expect(page.html).toContain("YouTube Music, Topic channels and OAC");
     expect(page.html).toContain("Artists retain master ownership");
     expect(page.html).toContain(
       "https://montyxlabel.cyou/images/montyx-distribution-hero.webp"

@@ -80,6 +80,8 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
   }, []);
   const nav = [
     ["Destinations", "/#platforms"],
+    ["Compare", "/#compare"],
+    ["YouTube", "/#youtube"],
     ["How it works", "/#process"],
     ["For artists", "/#about"],
     ["FAQ", "/#faq"],
@@ -101,9 +103,9 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </nav>
-          <Link className="header-cta" href="/contact">
-            Talk distribution <span aria-hidden="true">↗</span>
-          </Link>
+          <a className="header-cta" href="https://user.montyxlabel.cyou/login">
+            Get Started <span aria-hidden="true">↗</span>
+          </a>
           <details className="mobile-menu">
             <summary aria-label="Open navigation">
               <span></span>
@@ -111,10 +113,16 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             </summary>
             <nav aria-label="Mobile navigation">
               {nav.map(([label, href]) => (
-                <Link key={href} href={href}>
+                <a className="nav-link" key={href} href={href}>
                   {label}
-                </Link>
+                </a>
               ))}
+              <a
+                className="mobile-menu-portal"
+                href="https://user.montyxlabel.cyou/login"
+              >
+                Get Started ↗
+              </a>
             </nav>
           </details>
         </div>
@@ -131,9 +139,12 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
           <div className="footer-links">
             <span className="eyebrow">Distribution</span>
             <a href="/#platforms">Destinations</a>
+            <a href="/#compare">Compare providers</a>
+            <a href="/#youtube">YouTube channels</a>
             <a href="/#process">How it works</a>
             <a href="/#about">Artist ownership</a>
-            <Link href="/contact">Start a conversation</Link>
+            <a href="https://user.montyxlabel.cyou/login">Get Started ↗</a>
+            <Link href="/contact">Contact support</Link>
           </div>
           <div className="footer-links">
             <span className="eyebrow">Information</span>

@@ -1,8 +1,8 @@
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
-import { InsertUser, users } from "../drizzle/schema";
-import { ENV } from "./_core/env";
+import { InsertUser, users } from "../drizzle/schema.js";
+import { ENV } from "./_core/env.js";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -60,6 +60,10 @@ export async function getUserByOpenId(openId: string) {
     console.warn("[Database] Supabase database is not available");
     return undefined;
   }
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+  const result = await db
+    .select()
+    .from(users)
+    .where(eq(users.openId, openId))
+    .limit(1);
   return result[0];
 }

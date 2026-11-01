@@ -4,76 +4,96 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   siApplemusic,
   siAudiomack,
-  siBeatport,
   siDeezer,
   siFacebook,
   siIheartradio,
   siInstagram,
-  siMixcloud,
-  siNapster,
+  siNeteasecloudmusic,
   siPandora,
+  siShazam,
   siSoundcloud,
   siSpotify,
   siTidal,
   siTiktok,
   siYoutubemusic,
 } from "simple-icons";
+import DistributionComparison from "./DistributionComparison";
+import YouTubeGuide from "./YouTubeGuide";
 import "./DistributionLanding.css";
 
 const SignalOrbit = lazy(() => import("./SignalOrbit"));
+const ARTIST_PORTAL_URL = "https://user.montyxlabel.cyou/login";
 
 const platforms = [
-  { name: "Spotify", icon: siSpotify },
-  { name: "Apple Music", icon: siApplemusic },
-  { name: "YouTube Music", icon: siYoutubemusic },
-  { name: "Amazon Music", wordmark: "amazon music" },
-  { name: "Anghami", wordmark: "Anghami" },
-  { name: "Boomplay", wordmark: "Boomplay" },
-  { name: "JioSaavn", wordmark: "JioSaavn" },
-  { name: "Deezer", icon: siDeezer },
-  { name: "TIDAL", icon: siTidal },
-  { name: "SoundCloud", icon: siSoundcloud },
-  { name: "Audiomack", icon: siAudiomack },
-  { name: "Pandora", icon: siPandora },
-  { name: "iHeartRadio", icon: siIheartradio },
-  { name: "TikTok", icon: siTiktok },
-  { name: "Instagram", icon: siInstagram },
-  { name: "Facebook", icon: siFacebook },
-  { name: "Beatport", icon: siBeatport },
-  { name: "Mixcloud", icon: siMixcloud },
-  { name: "Napster", icon: siNapster },
+  { name: "Spotify", type: "icon", icon: siSpotify },
+  { name: "Apple Music", type: "icon", icon: siApplemusic },
+  { name: "YouTube Music", type: "icon", icon: siYoutubemusic },
+  {
+    name: "Amazon Music",
+    type: "image",
+    image: "/images/platforms/amazon-music.svg",
+    imageClass: "distribution-platform__asset--amazon",
+  },
+  {
+    name: "Boomplay",
+    type: "image",
+    image: "/images/platforms/boomplay-dark.png",
+    imageClass: "distribution-platform__asset--boomplay",
+  },
+  {
+    name: "JioSaavn",
+    type: "image",
+    image: "/images/platforms/jiosaavn-white.png",
+    imageClass: "distribution-platform__asset--jiosaavn",
+  },
+  { name: "Deezer", type: "icon", icon: siDeezer },
+  { name: "TIDAL", type: "icon", icon: siTidal },
+  { name: "SoundCloud", type: "icon", icon: siSoundcloud },
+  { name: "Audiomack", type: "icon", icon: siAudiomack },
+  { name: "Pandora", type: "icon", icon: siPandora },
+  { name: "iHeartRadio", type: "icon", icon: siIheartradio },
+  { name: "TikTok", type: "icon", icon: siTiktok },
+  { name: "Instagram", type: "icon", icon: siInstagram },
+  { name: "Facebook", type: "icon", icon: siFacebook },
+  { name: "Shazam", type: "icon", icon: siShazam },
+  { name: "NetEase Cloud Music", type: "icon", icon: siNeteasecloudmusic },
 ] as const;
 
 const questions = [
   {
-    question: "Which services can receive a release?",
+    question: "How much does MONTYX distribution cost?",
     answer:
-      "The marks are illustrative examples of popular streaming and social destinations, not a guarantee that every service accepts every release. Ask MONTYX to confirm whether a specific destination, territory and release are currently supported.",
+      "MONTYX currently offers free account access and no stated release-count cap. S-Music’s public white-label page separately states that it retains 20% of gross royalties for its service. The exact amount payable to an artist depends on MONTYX’s own current terms, so confirm the split before submitting.",
+  },
+  {
+    question: "Where can a release be delivered?",
+    answer:
+      "S-Music publicly claims a network of 375+ audio DSPs and 125+ video platforms. This is an upstream network claim—not a promise that every release, account or territory can use every service. Selected stores, release eligibility, territory and platform review can affect delivery. S-Music’s public page currently excludes Beatport and Traxsource for third-party white-label users.",
+  },
+  {
+    question: "Can my YouTube Topic channel merge with my personal channel?",
+    answer:
+      "An eligible artist may request an Official Artist Channel. YouTube controls eligibility, approval and how its channels are consolidated. S-Music publicly advertises OAC/Topic support, but its public explanation does not establish an automatic or guaranteed personal-to-Topic merge. Ask through the portal about the current request path for your channel.",
+  },
+  {
+    question: "Is YouTube Content ID included with every release?",
+    answer:
+      "No. YouTube Music delivery, Topic/Art Track creation, OAC requests and Content ID are distinct. Content ID is for eligible recordings and requires appropriate exclusive rights. The portal’s current Content ID guide excludes AI-generated or AI-assisted musical elements and sets out additional rights criteria.",
   },
   {
     question: "Do artists keep ownership of their masters?",
     answer:
-      "Artists retain master ownership unless a separate written agreement says otherwise. A distribution request or label credit does not, by itself, transfer ownership.",
+      "Artists retain master ownership unless a separate written agreement says otherwise. A distribution request, platform delivery, or label credit does not by itself transfer ownership.",
   },
   {
-    question: "How long does delivery take?",
+    question: "How do I create an account and submit a release?",
     answer:
-      "Release schedules and platform review times can vary. Contact MONTYX before setting a date so the specific release plan can be discussed; this site does not promise a delivery time.",
+      "Use Get Started to open the existing artist portal at user.montyxlabel.cyou/login. That portal handles its own sign-in and account creation. Follow its current upload, metadata, rights and review requirements; this marketing site does not store release masters.",
   },
   {
-    question: "What does distribution cost?",
+    question: "Are the streaming logos endorsements?",
     answer:
-      "This page does not publish prices or payout terms. Ask MONTYX directly for current terms before proceeding.",
-  },
-  {
-    question: "How do I begin?",
-    answer:
-      "Use the contact form to start a conversation. It saves the message and sends a support email when automatic delivery is available; otherwise, use the prefilled email draft. Please do not attach unreleased audio or private contracts.",
-  },
-  {
-    question: "Are the platform marks endorsements?",
-    answer:
-      "No. The service names and marks identify destinations only. They are owned by their respective companies and do not imply sponsorship or endorsement.",
+      "No. The service marks identify selected destinations only. They belong to their respective owners and do not imply sponsorship, certification or endorsement of MONTYX.",
   },
 ];
 
@@ -83,10 +103,12 @@ function DeferredSignal() {
 
   useEffect(() => {
     if (prefersReducedMotion !== false) return;
-    const connection = (navigator as Navigator & {
-      connection?: { saveData?: boolean; effectiveType?: string };
-      deviceMemory?: number;
-    }).connection;
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+        deviceMemory?: number;
+      }
+    ).connection;
     const device = navigator as Navigator & { deviceMemory?: number };
     const smallOrTouch = window.matchMedia(
       "(max-width: 650px), (pointer: coarse)"
@@ -146,23 +168,24 @@ export default function DistributionLanding() {
               <span>Going further.</span>
             </h1>
             <p className="distribution-hero__lede">
-              An independent route from Nepal to the streaming destinations
-              listeners use every day.
+              Independent, artist-first distribution from Nepal. Create your
+              account in the MONTYX artist portal and submit your next release.
             </p>
             <div className="distribution-hero__actions">
-              <Link
-                href="/contact"
+              <a
+                href={ARTIST_PORTAL_URL}
                 className="dist-button dist-button--primary"
               >
-                Talk distribution <span aria-hidden="true">↗</span>
-              </Link>
-              <a href="#platforms" className="dist-button dist-button--quiet">
-                Explore destinations <span aria-hidden="true">↓</span>
+                Get Started <span aria-hidden="true">↗</span>
+              </a>
+              <a href="#compare" className="dist-button dist-button--quiet">
+                Compare platforms <span aria-hidden="true">↓</span>
               </a>
             </div>
             <div className="distribution-hero__meta">
-              <span>Independent by design</span>
-              <span>From Nepal, outward</span>
+              <span>Free MONTYX access</span>
+              <span>No release-count cap stated</span>
+              <span>Artist masters stay yours</span>
             </div>
           </motion.div>
           <div className="distribution-hero__visual-label" aria-hidden="true">
@@ -170,10 +193,31 @@ export default function DistributionLanding() {
             <span>INDEPENDENT SOUND · NEPAL</span>
           </div>
         </div>
-        <a className="distribution-hero__scroll" href="#platforms">
-          <span>Scroll to explore</span>
+        <a className="distribution-hero__scroll" href="#offer">
+          <span>See the offer</span>
           <span className="distribution-hero__scroll-line" aria-hidden="true" />
         </a>
+      </section>
+
+      <section className="distribution-offer content-width" id="offer">
+        <article>
+          <span className="distribution-offer__value">FREE</span>
+          <h2>Start without an upfront distribution fee.</h2>
+          <p>MONTYX’s current artist-facing offer.</p>
+        </article>
+        <article>
+          <span className="distribution-offer__value">NO CAP</span>
+          <h2>No stated release-count limit.</h2>
+          <p>All submissions still go through partner and DSP review.</p>
+        </article>
+        <article>
+          <span className="distribution-offer__value">375+ / 125+</span>
+          <h2>Audio and video network claim.</h2>
+          <p>
+            S-Music’s public count; availability varies by service and
+            territory.
+          </p>
+        </article>
       </section>
 
       <section
@@ -184,21 +228,25 @@ export default function DistributionLanding() {
         <div className="distribution-section-heading">
           <div>
             <span className="dist-eyebrow dist-eyebrow--red">
-              THE DESTINATION NETWORK
+              SELECTED DESTINATION MARKS
             </span>
             <h2 id="platforms-title">More places for your sound.</h2>
           </div>
           <p>
-            Selected streaming and social destinations. The list is
-            illustrative; availability depends on territory, release
-            requirements and each service.
+            These actual service marks are selected examples—not an exhaustive
+            or per-release delivery list. Distribution runs through MONTYX’s
+            S-Music white-label provider; destination, territory and release
+            eligibility can vary.
           </p>
         </div>
         <div className="distribution-platform-grid">
           {platforms.map(platform => (
             <div className="distribution-platform" key={platform.name}>
-              <span className="distribution-platform__mark" aria-hidden="true">
-                {"icon" in platform ? (
+              <span
+                className={`distribution-platform__mark${platform.type === "image" ? " distribution-platform__mark--image" : ""}`}
+                aria-hidden="true"
+              >
+                {platform.type === "icon" ? (
                   <svg viewBox="0 0 24 24" focusable="false">
                     <path
                       d={platform.icon.path}
@@ -206,9 +254,13 @@ export default function DistributionLanding() {
                     />
                   </svg>
                 ) : (
-                  <span className="distribution-platform__wordmark">
-                    {platform.wordmark}
-                  </span>
+                  <img
+                    className={platform.imageClass}
+                    src={platform.image}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
                 )}
               </span>
               <span className="distribution-platform__name">
@@ -218,11 +270,16 @@ export default function DistributionLanding() {
           ))}
         </div>
         <p className="distribution-network__fineprint">
-          Third-party names and marks are the property of their respective
-          owners. Their appearance identifies destinations only and does not
-          indicate sponsorship or endorsement.
+          S-Music’s current public white-label page says Beatport and Traxsource
+          are not available to third-party users. The upstream network count is
+          not a guarantee that each release will reach every destination or
+          market. Third-party marks identify services only and do not indicate
+          endorsement or certification.
         </p>
       </section>
+
+      <DistributionComparison />
+      <YouTubeGuide />
 
       <section className="distribution-process" id="process">
         <div className="content-width">
@@ -231,39 +288,44 @@ export default function DistributionLanding() {
               <span className="dist-eyebrow dist-eyebrow--red">
                 A CLEAR RELEASE PATH
               </span>
-              <h2>From finished track to first play.</h2>
+              <h2>From your portal to the right destinations.</h2>
             </div>
             <p>
-              Start with a conversation. We’ll confirm what your release needs
-              before anything is scheduled.
+              Account creation and release submissions happen in the existing
+              artist portal. Each release remains subject to rights review,
+              metadata checks, partner acceptance and individual store rules.
             </p>
           </div>
           <div className="distribution-steps">
             <article className="distribution-step">
               <span className="distribution-step__index">01</span>
               <div className="distribution-step__rule" aria-hidden="true" />
-              <h3>Prepare the release</h3>
+              <h3>Create your account</h3>
               <p>
-                Have your final audio, approved artwork and release details
-                ready to discuss.
+                Get Started opens the MONTYX artist portal, where its login page
+                provides the account-creation option.
               </p>
+              <a className="dist-text-link" href={ARTIST_PORTAL_URL}>
+                Open the portal <span aria-hidden="true">↗</span>
+              </a>
             </article>
             <article className="distribution-step">
               <span className="distribution-step__index">02</span>
               <div className="distribution-step__rule" aria-hidden="true" />
-              <h3>Talk with MONTYX</h3>
+              <h3>Submit your release</h3>
               <p>
-                Share your plans through the inquiry form. The team can confirm
-                the current requirements and terms.
+                Follow the portal’s current instructions for audio, artwork,
+                credits, rights, release metadata and delivery choices.
               </p>
             </article>
             <article className="distribution-step">
               <span className="distribution-step__index">03</span>
               <div className="distribution-step__rule" aria-hidden="true" />
-              <h3>Deliver to destinations</h3>
+              <h3>Review and delivery</h3>
               <p>
-                Once details are confirmed, your release can be prepared for
-                supported services, subject to their rules and schedules.
+                Accepted releases are prepared through the white-label partner.
+                Store approval, timing and territorial availability are not
+                guaranteed by a network count.
               </p>
             </article>
           </div>
@@ -276,7 +338,14 @@ export default function DistributionLanding() {
         aria-labelledby="artist-first-title"
       >
         <div className="distribution-artist__index" aria-hidden="true">
-          <span>MX</span>
+          <img
+            src="/montyx-mark.png"
+            alt=""
+            width="180"
+            height="180"
+            loading="lazy"
+            decoding="async"
+          />
           <span>NEPAL · INDEPENDENT</span>
         </div>
         <div className="distribution-artist__copy">
@@ -311,12 +380,12 @@ export default function DistributionLanding() {
             Clear answers.
           </h2>
           <p>
-            Distribution details can differ between services. If your release
-            needs a specific answer, ask before choosing a date.
+            Check the current terms, delivery route and YouTube workflow before
+            choosing a release date.
           </p>
-          <Link href="/contact" className="dist-text-link">
-            Ask MONTYX <span aria-hidden="true">↗</span>
-          </Link>
+          <a className="dist-text-link" href={ARTIST_PORTAL_URL}>
+            Get Started <span aria-hidden="true">↗</span>
+          </a>
         </div>
         <div className="distribution-faq__list">
           {questions.map((item, index) => (
@@ -348,21 +417,32 @@ export default function DistributionLanding() {
             <span className="dist-eyebrow">MONTYX RECORDS DISTRIBUTION</span>
             <h2>Ready to move your next release?</h2>
             <p>
-              Tell us what you’re building. Start with a conversation and
-              confirm the terms and destinations before you commit.
+              Create an artist account in the existing portal. Questions about
+              rights, the current artist split or YouTube OAC requests? Contact
+              the team before submitting.
             </p>
           </div>
-          <Link href="/contact" className="dist-button dist-button--primary">
-            Start a conversation <span aria-hidden="true">↗</span>
-          </Link>
+          <div className="distribution-contact__actions">
+            <a
+              href={ARTIST_PORTAL_URL}
+              className="dist-button dist-button--primary"
+            >
+              Get Started <span aria-hidden="true">↗</span>
+            </a>
+            <Link href="/contact" className="dist-button dist-button--quiet">
+              Contact support <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       <p className="distribution-trademark-note content-width">
-        Streaming and social platform names and logos are trademarks of their
-        respective owners. MONTYX RECORDS is not affiliated with or endorsed by
-        those services. Actual availability is subject to territory, eligibility
-        and each service’s policies.
+        Provider counts and distribution terms above are attributed to the
+        upstream provider and are not a guarantee of delivery, approval, timing
+        or earnings. Streaming and social-service logos are trademarks of their
+        respective owners; they identify services only and do not imply
+        affiliation, endorsement or certification. MONTYX’s artist-facing
+        royalty terms must be confirmed separately.
       </p>
     </main>
   );

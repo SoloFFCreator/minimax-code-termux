@@ -1,0 +1,12 @@
+# DSP mark sources and usage notes
+
+The destination grid uses real graphic marks to identify selected services. These logos belong to their respective owners; their presence does not imply endorsement, certification or a guaranteed destination for any release. Keep original proportions, colors and spacing. Do not recolor, distort, crop, add effects or combine marks into fake partnership lockups. The MONTYX brand image (`client/public/montyx-mark.png`) is not part of this set and remains unchanged.
+
+| Destination | Local asset/source | Official guidance |
+|---|---|---|
+| Amazon Music | `client/public/images/platforms/amazon-music.svg` — public SVG served on the official Amazon Music site; white horizontal mark displayed proportionally. | [Amazon Music brand guidelines](https://artists.amazonmusic.com/brand-guidelines): horizontal logo is primary; use the dark-background variant where appropriate; observe clear-space/minimum-size rules. |
+| Boomplay | `client/public/images/platforms/boomplay-dark.png` — original single-colour logo for dark backgrounds from the official RGB logo/icon pack. | [Boomplay Visual Identity Guide](https://www.boomplay.com/vi/) and [official logo/icon pack](https://source.boomplaymusic.com/fed_static/VI/2-Boomplay_logo_icon.zip). |
+| JioSaavn | `client/public/images/platforms/jiosaavn-white.png` — original full white primary lockup, resized proportionally only. | [JioSaavn Brand Guide](https://www.jiosaavn.com/corporate/brand) and [official design/logo-kit page](https://www.jiosaavn.com/corporate/design/). The page permits a full primary lockup; the icon-only variant requires written approval, so the website uses the full lockup. |
+| Spotify, Apple Music, YouTube Music, Deezer, TIDAL, SoundCloud, Audiomack, Pandora, iHeartRadio, TikTok, Instagram, Facebook, Shazam and NetEase Cloud Music | Vector symbol paths from the `simple-icons` dependency, imported in the landing component. | [Simple Icons](https://simpleicons.org/) provides brand icons; each service's name is shown separately as accessible supporting text. |
+
+This grid is a curated visual sample, not a 150-logo claim or an exhaustive store directory. The associated “375+ audio DSPs / 125+ video platforms” figures are attributed to S-Music’s public white-label page and are not a promise of per-release or all-territory availability. Its page currently excludes Beatport and Traxsource for third-party white-label users; those marks are not presented as supported.

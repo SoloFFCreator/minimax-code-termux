@@ -6,9 +6,9 @@ import {
   platformLinks,
   releases,
   siteSettings,
-} from "../drizzle/schema";
-import { getDb } from "./db";
-import { storageGetSignedUrl } from "./storage";
+} from "../drizzle/schema.js";
+import { getDb } from "./db.js";
+import { storageGetSignedUrl } from "./storage.js";
 
 export const defaultSettings = {
   labelName: "MONTYX RECORDS",

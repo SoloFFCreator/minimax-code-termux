@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { readSettings } from "../server/content";
+import { readSettings } from "../server/content.js";
 
 export default async function handler(
   req: IncomingMessage,

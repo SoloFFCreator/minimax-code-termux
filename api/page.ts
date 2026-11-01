@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { renderSeoDocument } from "../server/_core/seo";
+import { renderSeoDocument } from "../server/_core/seo.js";
 
 export default async function handler(
   req: IncomingMessage,

@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { z } from "zod";
-import { ENV } from "../server/_core/env";
-import { submitContact } from "../server/content";
-import { sendContactEmail } from "../server/contactEmail";
+import { ENV } from "../server/_core/env.js";
+import { submitContact } from "../server/content.js";
+import { sendContactEmail } from "../server/contactEmail.js";
 
 const MAX_BODY_BYTES = 16 * 1024;
 const inputSchema = z.object({

@@ -884,7 +884,6 @@
   }
 }
 
-
 /* Keep the landing page light on small screens and slow display pipelines. */
 @media (max-width: 650px), (update: slow) {
   .signal-orbit {
@@ -907,5 +906,347 @@
 @media (prefers-reduced-motion: reduce) {
   .signal-orbit {
     display: none;
+  }
+}
+
+/* Honest offer, platform marks and comparison modules. */
+.site-header .mobile-menu nav a.mobile-menu-portal {
+  color: #ff8491;
+  font-weight: 700;
+}
+
+.distribution-offer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 1px solid var(--dist-line);
+  scroll-margin-top: 90px;
+}
+
+.distribution-offer article {
+  min-height: 180px;
+  padding: 26px 30px 28px 0;
+  border-right: 1px solid var(--dist-line);
+}
+
+.distribution-offer article + article {
+  padding-left: 30px;
+}
+
+.distribution-offer article:last-child {
+  border-right: 0;
+}
+
+.distribution-offer__value {
+  color: #ff7181;
+  font: 700 18px/1 var(--display);
+  letter-spacing: -0.035em;
+}
+
+.distribution-offer h2 {
+  max-width: 290px;
+  margin: 12px 0 8px;
+  font: 600 18px/1.2 var(--display);
+  letter-spacing: -0.04em;
+}
+
+.distribution-offer p {
+  max-width: 350px;
+  margin: 0;
+  color: var(--dist-muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.distribution-platform__mark--image {
+  width: 82px;
+  height: 32px;
+  flex-basis: 82px;
+}
+
+.distribution-platform__mark--image img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.distribution-platform__asset--amazon {
+  width: 82px;
+  height: 20px;
+}
+
+.distribution-platform__asset--boomplay {
+  width: 82px;
+  height: 19px;
+}
+
+.distribution-platform__asset--jiosaavn {
+  width: 82px;
+  height: 33px;
+}
+
+.distribution-comparison,
+.distribution-youtube {
+  padding-block: 104px 110px;
+  border-top: 1px solid var(--dist-line);
+  scroll-margin-top: 82px;
+}
+
+.distribution-comparison__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.distribution-comparison__card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 22px 20px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.008)
+  );
+}
+
+.distribution-comparison__card--montyx {
+  border-color: rgba(225, 29, 53, 0.75);
+  background: linear-gradient(
+    145deg,
+    rgba(225, 29, 53, 0.14),
+    rgba(17, 17, 21, 0.93) 66%
+  );
+}
+
+.distribution-comparison__card-head {
+  display: flex;
+  min-height: 66px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--dist-line);
+}
+
+.distribution-comparison__model {
+  color: #a9a2a5;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.distribution-comparison__card h3 {
+  margin: 7px 0 0;
+  font: 600 22px/1.1 var(--display);
+  letter-spacing: -0.045em;
+}
+
+.distribution-comparison__current {
+  flex: 0 0 auto;
+  padding: 5px 6px;
+  border: 1px solid rgba(255, 113, 129, 0.45);
+  color: #ff8895;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.distribution-comparison__facts {
+  display: grid;
+  gap: 13px;
+  margin: 17px 0 20px;
+}
+
+.distribution-comparison__facts > div {
+  display: grid;
+  gap: 4px;
+}
+
+.distribution-comparison__facts dt {
+  color: #ff8491;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.distribution-comparison__facts dd {
+  margin: 0;
+  color: #d1cbce;
+  font-size: 11px;
+  line-height: 1.68;
+}
+
+.distribution-comparison__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 13px;
+  border-top: 1px solid var(--dist-line);
+}
+
+.distribution-comparison__sources a,
+.distribution-youtube__sources a {
+  color: #eee8ea;
+  font-size: 10px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 113, 129, 0.7);
+  text-underline-offset: 3px;
+}
+
+.distribution-comparison__sources a:hover,
+.distribution-youtube__sources a:hover {
+  color: #ff8a98;
+}
+
+.distribution-comparison__disclaimer {
+  max-width: 950px;
+  margin: 20px 0 0;
+  color: #888185;
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.distribution-youtube {
+  border-block: 1px solid var(--dist-line);
+  background: #0d0d10;
+}
+
+.distribution-youtube__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.distribution-youtube__card {
+  min-height: 242px;
+  padding: 23px 21px;
+  border: 1px solid var(--dist-line);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.distribution-youtube__number {
+  color: #ff7181;
+  font: 600 13px/1 var(--display);
+  letter-spacing: 0.08em;
+}
+
+.distribution-youtube__card h3 {
+  margin: 26px 0 11px;
+  font: 600 20px/1.16 var(--display);
+  letter-spacing: -0.04em;
+}
+
+.distribution-youtube__card p {
+  margin: 0;
+  color: #b4aeb1;
+  font-size: 11px;
+  line-height: 1.78;
+}
+
+.distribution-youtube__sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 20px;
+  margin-top: 22px;
+  color: #9a9397;
+  font-size: 10px;
+}
+
+.distribution-contact__actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 1120px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .nav-inner {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .distribution-comparison__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .distribution-youtube__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distribution-youtube__card {
+    min-height: auto;
+  }
+
+  .distribution-youtube__card h3 {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .distribution-offer {
+    grid-template-columns: 1fr;
+  }
+
+  .distribution-offer article,
+  .distribution-offer article + article {
+    min-height: auto;
+    padding: 22px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--dist-line);
+  }
+
+  .distribution-offer article:last-child {
+    border-bottom: 0;
+  }
+
+  .distribution-comparison,
+  .distribution-youtube {
+    padding-block: 78px;
+  }
+
+  .distribution-comparison__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distribution-comparison__card {
+    padding: 20px 16px 16px;
+  }
+
+  .distribution-platform__mark--image {
+    width: 72px;
+    flex-basis: 72px;
+  }
+
+  .distribution-platform__asset--amazon,
+  .distribution-platform__asset--boomplay {
+    width: 72px;
+  }
+
+  .distribution-platform__asset--jiosaavn {
+    width: 72px;
+  }
+
+  .distribution-contact__actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .distribution-contact__actions .dist-button {
+    width: 100%;
   }
 }
